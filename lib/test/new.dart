@@ -120,37 +120,40 @@ class TestNewAppState extends State<TestNewApp> {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        this.getBluetoots();
-                      },
-                      child: Row(
-                        children: [
-                          Visibility(
-                            visible: _progress,
-                            child: SizedBox(
-                              child: CircularProgressIndicator.adaptive(
-                                  strokeWidth: 1,
-                                  backgroundColor: Colors.white),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          this.getBluetoots();
+                        },
+                        child: Row(
+                          children: [
+                            Visibility(
+                              visible: _progress,
+                              child: SizedBox(
+                                child: CircularProgressIndicator.adaptive(
+                                    strokeWidth: 1,
+                                    backgroundColor: Colors.white),
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 5),
-                          Text(_progress ? _msjprogress : "Search"),
-                        ],
+                            SizedBox(width: 5),
+                            Text(_progress ? _msjprogress : "Search"),
+                          ],
+                        ),
                       ),
-                    ),
-                    ElevatedButton(
-                      onPressed: connected ? this.disconnect : null,
-                      child: Text("Disconnect"),
-                    ),
-                    ElevatedButton(
-                      onPressed: connected ? this.printTest : null,
-                      child: Text("Test"),
-                    ),
-                  ],
+                      ElevatedButton(
+                        onPressed: connected ? this.disconnect : null,
+                        child: Text("Disconnect"),
+                      ),
+                      ElevatedButton(
+                        onPressed: connected ? this.printTest : null,
+                        child: Text("Test"),
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                     height: 200,
@@ -353,7 +356,8 @@ class TestNewAppState extends State<TestNewApp> {
     //bytes += generator.setGlobalFont(PosFontType.fontA);
     bytes += generator.reset();
     //////////////////////////////// image opt
-    final ByteData data = await rootBundle.load('assets/mylogo.jpg');
+    final ByteData data =
+        await rootBundle.load('assets/photo2024-09-24-22.15.26.jpeg');
     final Uint8List bytesImg = data.buffer.asUint8List();
     img.Image? image = img.decodeImage(bytesImg);
 
@@ -459,3 +463,4 @@ class TestNewAppState extends State<TestNewApp> {
     }
   }
 }
+//
