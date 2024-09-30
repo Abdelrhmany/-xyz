@@ -1,4 +1,4 @@
-//
+//////////////////////////////////////////////
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/services.dart';
@@ -363,12 +363,14 @@ class TestNewAppState extends State<TestNewApp> {
 
     if (Platform.isIOS) {
       // Resizes the image to half its original size and reduces the quality to 80%
-      final resizedImage = img.copyResize(image!,
-          width: image.width ~/ 1.3,
-          height: image.height ~/ 1.3,
-          interpolation: img.Interpolation.nearest);
+      final resizedImage =
+          img.copyResize(image!, interpolation: img.Interpolation.nearest
+              // width: image.width ~/ 1.3,
+              // height: image.height ~/ 1.3,
+              // interpolation: img.Interpolation.nearest
+              );
       Uint8List.fromList(img.encodeJpg(resizedImage));
-      //image = img.decodeImage(bytesimg);
+      // image = img.decodeImage(bytesimg);
     }
 
     //Using `ESC *`
